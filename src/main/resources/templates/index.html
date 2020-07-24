@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link th:href="@{/css/bootstrap.css}"      rel="stylesheet" href="../static/css/bootstrap.css">
+
+
+
+    <script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
+    <script  th:src="@{/js/bootstrap.js}"  src="../static/js/bootstrap.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer App Spring Boot </title>
+</head>
+<body>
+  <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Primera Aplicación Spring</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" th:href="@{/}" href="#">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Galeria</a>
+            <a class="nav-item nav-link" href="#">Post</a>
+          </div>
+        </div>
+      </nav>
+<!-- Headers-->
+      <div class="jumbotron">
+        <h1 class="display-4">Hola, Bienvenido!</h1>
+        <p class="lead">En esta pagina encontraras todo tipo de informacion relevante del momento</p>
+        <hr class="my-4">
+        <p>Esta es una practica.</p>
+        <a  th:href ="@{/home/NewPost}" href="#" class="btn btn-outline-success">>Añade un nuevo Post!</a>
+      </div>
+      <!-- CARDS-->
+      <div class="container">
+        <div class="row">
+          <div th:each="post : ${posts}" class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="${post.urlImg}" src="../static/img/perro.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 th:text = "${post.Titulo}"class="card-title">Card title</h5>
+                      <p  th:text ="${post.descripcion}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a  th:href ="@{/home/post?id=} + ${post.id}" href="#" class="btn btn-primary">Ir!</a>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+
+      </div>
+<footer>
+  <p>Realizado Por Camilo Rozo </p>
+</footer>
+</body>
+</html>
